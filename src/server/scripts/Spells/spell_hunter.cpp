@@ -614,7 +614,8 @@ class spell_hun_tame_beast : public SpellScriptLoader
 
                 if (Creature* target = GetExplTargetUnit()->ToCreature())
                 {
-                    if (target->getLevel() > caster->getLevel())
+                    TC_LOG_ERROR("server.worldserver", "== target level %u, caster level %u", target->GetLevelForTarget(caster), caster->getLevel());
+                    if (target->GetLevelForTarget(caster) > caster->getLevel())
                         return SPELL_FAILED_HIGHLEVEL;
 
                     // use SMSG_PET_TAME_FAILURE?
