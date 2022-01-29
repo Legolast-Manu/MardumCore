@@ -1,4 +1,4 @@
-# ShalamayneCore
+# MardumCore
 
 ![Mardumlogo](https://i.ytimg.com/vi/sMbXKJL82hA/maxresdefault.jpg)
 --------------
