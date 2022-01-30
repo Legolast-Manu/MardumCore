@@ -5,7 +5,7 @@
 
 ## Introduction
 
-5CentsCore is a *MMORPG* Framework based mostly in C++.
+MardumCore is a *MMORPG* Framework based mostly in C++.
 It is fully based on the MardumCore, TrinityCore.
 All credits to these guys.
 

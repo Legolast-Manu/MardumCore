@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017-2018 5CentsCore <https://github.com/MardumCoreProject>
+ * Copyright (C) 2017-2018 MardumCore <https://github.com/MardumCoreProject>
  * Copyright (C) 2008-2017 TrinityCore <http://www.trinitycore.org/>
  *
  * This program is free software; you can redistribute it and/or modify it
