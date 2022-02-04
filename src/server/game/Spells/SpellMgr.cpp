@@ -2582,6 +2582,13 @@ void SpellMgr::LoadSpellInfoCorrections()
     {
         spellInfo->AttributesEx3 |= SPELL_ATTR3_CANT_TRIGGER_PROC;
     });
+	
+	// Revenge (Warrior) - DBC have SpellLevel & BaseLevel = 0 
+	ApplySpellFix({ 5301, 5302 }, [](SpellInfo* spellInfo)
+	{
+		spellInfo->SpellLevel = 22;
+		spellInfo->BaseLevel = 22;
+	});
 
     ApplySpellFix({
         31347, // Doom
