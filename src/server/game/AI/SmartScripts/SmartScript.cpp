@@ -2911,6 +2911,86 @@ void SmartScript::ProcessAction(SmartScriptHolder& e, Unit* unit, uint32 var0, u
 
             break;
         }
+        case SMART_ACTION_FORCE_COMPLETE_QUEST:
+        {
+            ObjectList* targets = GetTargets(e, unit);
+            if (!targets)
+                break;
+
+            for (ObjectList::const_iterator itr = targets->begin(); itr != targets->end(); ++itr)
+                if (Player * player = (*itr)->ToPlayer())
+                    for (auto const& questID : e.action.ForceCompleteQuest.quest)
+                        player->ForceCompleteQuest(questID);
+
+            delete targets;
+            break;
+        }
+        case SMART_ACTION_SET_HEALTH_IN_PERCENT:
+        {
+            if (!me)
+                break;
+
+            me->SetHealth(me->CountPctFromMaxHealth(e.action.setHpPerc.hpvalue));
+            break;
+        }
+        case SMART_ACTION_MOD_CURRENCY:
+        {
+            ObjectList* targets = GetTargets(e, unit);
+            if (!targets)
+                break;
+
+            for (ObjectList::const_iterator itr = targets->begin(); itr != targets->end(); ++itr)
+                if (Player * player = (*itr)->ToPlayer())
+                    player->ModifyCurrency(e.action.modCurrency.currencyID, e.action.modCurrency.count, true, false);
+
+            delete targets;
+            break;
+        }
+        case SMART_ACTION_CLEAR_QUEST:
+        {
+
+            ObjectList* targets = GetTargets(e, unit);
+            if (!targets)
+                break;
+
+            for (ObjectList::const_iterator itr = targets->begin(); itr != targets->end(); ++itr)
+                if (Player * player = (*itr)->ToPlayer())
+                    for (auto const& questID : e.action.clearQuest.quest)
+                        player->RemoveRewardedQuest(questID);
+
+            delete targets;
+            break;
+        }
+        case SMART_ACTION_UNLEARN_SPELL:
+        {
+
+            ObjectList* targets = GetTargets(e, unit);
+            if (!targets)
+                break;
+
+            for (ObjectList::const_iterator itr = targets->begin(); itr != targets->end(); ++itr)
+                if (Player * player = (*itr)->ToPlayer())
+                    for (auto const& entryID : e.action.unlearnSpell.spell)
+                        player->RemoveSpell(entryID);
+
+            delete targets;
+            break;
+        }
+        case SMART_ACTION_LEARN_SPELL:
+        {
+
+            ObjectList* targets = GetTargets(e, unit);
+            if (!targets)
+                break;
+
+            for (ObjectList::const_iterator itr = targets->begin(); itr != targets->end(); ++itr)
+                if (Player * player = (*itr)->ToPlayer())
+                    for (auto const& entryID : e.action.learnSpell.spell)
+                        player->LearnSpell(entryID, false);
+
+            delete targets;
+            break;
+        }
         default:
             TC_LOG_ERROR("sql.sql", "SmartScript::ProcessAction: Entry " SI64FMTD " SourceType %u, Event %u, Unhandled Action type %u", e.entryOrGuid, e.GetScriptType(), e.event_id, e.GetActionType());
             break;
