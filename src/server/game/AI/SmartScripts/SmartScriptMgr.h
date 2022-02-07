@@ -585,14 +585,12 @@ enum SMART_ACTION
     SMART_ACTION_ADD_FLYING_MOVEMENT_FLAG           = 213,    // Variation
     SMART_ACTION_REMOVE_FLYING_MOVEMENT_FLAG        = 214,    // Variation
     SMART_ACTION_CAST_SPELL_OFFSET                  = 215,    // SpellId, triggered if value = 1.
-
     SMART_ACTION_FORCE_COMPLETE_QUEST               = 221,    // Force complete quest by ID (misc1, misc2 ...)
     SMART_ACTION_SET_HEALTH_IN_PERCENT              = 222,    // Set hp in percent
     SMART_ACTION_MOD_CURRENCY                       = 223,    // Modify currency to player by ID and count
     SMART_ACTION_CLEAR_QUEST                        = 224,    // Clear rewarded quest from player (quest ID)
     SMART_ACTION_UNLEARN_SPELL                      = 225,    // Unlearn spells from player
     SMART_ACTION_LEARN_SPELL                        = 226,    // Learn spells to player
-
     SMART_ACTION_END
 };
 
