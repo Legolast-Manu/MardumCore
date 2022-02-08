@@ -41,6 +41,32 @@
 #include "World.h"
 #include "WorldPacket.h"
 
+#include <boost/algorithm/string/find.hpp>
+#include <boost/algorithm/string/find_iterator.hpp>
+
+typedef boost::find_iterator<std::string::iterator> string_find_iterator;
+
+// Return substring count inside some string
+inline uint32 CountSubstring(std::string text, std::string term)
+{
+    uint32 strInsideCount = 0;
+
+    for (string_find_iterator It = boost::make_find_iterator(text, boost::first_finder(term, boost::algorithm::is_iequal()));
+        It != string_find_iterator();
+        ++It)
+    {
+        strInsideCount += 1;
+    }
+
+    return strInsideCount;
+}
+
+// Check if substring is contained inside some string
+inline bool ContainString(std::string text, std::string search)
+{
+    return boost::find_first(text, search);
+}
+
 void WorldSession::HandleChatMessageOpcode(WorldPackets::Chat::ChatMessage& chatMessage)
 {
     ChatMsg type;
@@ -203,6 +229,16 @@ void WorldSession::HandleChatMessage(ChatMsg type, uint32 lang, std::string msg,
         return;
     }
 
+    // Check if this msg have a quest link and is valid
+    // If link don't have this form |Hquest:quest_id:real_level:min_level:max_scaling_level| the link is broken and crash the player client
+    // Example of valid quest link: |cff808080|Hquest:28757:3:1:255|h[¡Rechazar el ataque!]|h|r
+    // Example of broken quest link: |cffffff00|Hquest:28757:3|h[¡Rechazar el ataque!]|h|r
+    if (ContainString(msg, "|Hquest:"))
+    {
+        if (CountSubstring(msg, ":") != 4)
+            return;
+    }
+
     switch (type)
     {
         case CHAT_MSG_SAY:
@@ -360,14 +396,14 @@ void WorldSession::HandleChatMessage(ChatMsg type, uint32 lang, std::string msg,
         case CHAT_MSG_RAID_WARNING:
         {
             Group* group = GetPlayer()->GetGroup();
-            if (!group || !group->isRaidGroup() || !(group->IsLeader(GetPlayer()->GetGUID()) || group->IsAssistant(GetPlayer()->GetGUID())) || group->isBGGroup())
+            if (!group || !group->isRaidGroup() || !(group->IsLeader(GetPlayer()->GetGUID()) || group->IsAssistant(GetPlayer()->GetGUID())))
                 return;
 
             sScriptMgr->OnPlayerChat(GetPlayer(), type, lang, msg, group);
 
             WorldPackets::Chat::Chat packet;
             //in battleground, raid warning is sent only to players in battleground - code is ok
-            packet.Initialize(CHAT_MSG_RAID_WARNING, Language(lang), sender, NULL, msg);
+            packet.Initialize(ChatMsg(type), Language(lang), sender, nullptr, msg);
             group->BroadcastPacket(packet.Write(), false);
             break;
         }
@@ -395,8 +431,11 @@ void WorldSession::HandleChatMessage(ChatMsg type, uint32 lang, std::string msg,
             if (!group)
                 return;
 
+            // I don't underestand why when CHAT_MSG_INSTANCE_CHAT is sent to client in BG, client ignore this
+            type = CHAT_MSG_RAID;
+
             if (group->IsLeader(GetPlayer()->GetGUID()))
-                type = CHAT_MSG_INSTANCE_CHAT_LEADER;
+                type = CHAT_MSG_RAID_LEADER;
 
             sScriptMgr->OnPlayerChat(GetPlayer(), type, lang, msg, group);
 
