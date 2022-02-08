@@ -2514,6 +2514,12 @@ void SpellMgr::LoadSpellInfoCorrections()
 {
     uint32 oldMSTime = getMSTime();
 
+    // Shockwave (Stun)
+    ApplySpellFix({ 132168 }, [](SpellInfo* spellInfo)
+    {
+        spellInfo->Mechanic = MECHANIC_STUN;
+    });
+	
     // Ring of Frost
     ApplySpellFix({ 82691 }, [](SpellInfo* spellInfo)
     {
