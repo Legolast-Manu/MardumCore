@@ -18614,8 +18614,9 @@ bool Player::LoadFromDB(ObjectGuid guid, SQLQueryHolder *holder)
         {
             TC_LOG_ERROR("entities.player", "Player::LoadFromDB: Player '%s' (%s) Map: %u, X: %f, Y: %f, Z: %f, O: %f. Areatrigger not found.",
                 m_name.c_str(), guid.ToString().c_str(), mapId, GetPositionX(), GetPositionY(), GetPositionZ(), GetOrientation());
-            RelocateToHomebind();
-            map = nullptr;
+            mapId = m_bgData.joinPos.m_mapId;
+            Relocate(m_bgData.joinPos);
+            map = sMapMgr->CreateMap(mapId, this);
         }
     }
 
