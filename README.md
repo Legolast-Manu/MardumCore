@@ -1,6 +1,6 @@
 # Legends of Azeroth Legion Progect
 
-![Legends of Azeroth Legion Progect](<a href="https://imgbb.com/"><img src="https://i.ibb.co/tmv2wfz/6fd3b09456a142e78686cb0e4dd4642d.png" alt="6fd3b09456a142e78686cb0e4dd4642d" border="0"></a>)
+![Legends of Azeroth Legion Progect](https://i.ibb.co/tmv2wfz/6fd3b09456a142e78686cb0e4dd4642d.png)
 --------------
 
 ## Introduction
