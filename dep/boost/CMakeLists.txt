@@ -38,7 +38,7 @@ check_cxx_source_compiles("
   STD_HAS_WORKING_WREGEX)
 
 if (STD_HAS_WORKING_WREGEX)
-  find_package(Boost 1.58 REQUIRED system filesystem thread program_options iostreams)
+  find_package(Boost 1.66 REQUIRED system filesystem thread program_options iostreams)
 else()
   find_package(Boost 1.58 REQUIRED system filesystem thread program_options iostreams regex)
 endif()

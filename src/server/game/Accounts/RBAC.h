@@ -793,6 +793,7 @@ enum RBACPermissions
     RBAC_PERM_COMMAND_NPC_RELOAD                             = 2006,
     RBAC_PERM_COMMAND_LFG_DEBUG                              = 2007,
     RBAC_PERM_COMMAND_TICKET_ADDON                           = 2008,
+    RBAC_PERM_COMMAND_MODIFY_XP_ARTIFACT                     = 2009,
     RBAC_PERM_MAX
 };
 

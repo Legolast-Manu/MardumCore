@@ -11,9 +11,9 @@
  #define _MYSQL_EXECUTABLE          R"(@MYSQL_EXECUTABLE@)"
  #define _FULL_DATABASE             "MDB_world_735.00.sql"
  #define _HOTFIXES_DATABASE         "MDB_hotfixes_735.00.sql"
- #define VER_COMPANYNAME_STR        "5%Cents Developers"
- #define VER_LEGALCOPYRIGHT_STR     "(c)2021-2022 MardumCore"
- #define VER_FILEVERSION            0,0,0
+ #define VER_COMPANYNAME_STR        "Legends of Azeroth Developers"
+ #define VER_LEGALCOPYRIGHT_STR     "(c)2023 Legends of Azeroth core"
+ #define VER_FILEVERSION            1,0,0
  #define VER_FILEVERSION_STR        "@rev_hash@ @rev_date@ (@rev_branch@ branch)"
  #define VER_PRODUCTVERSION         VER_FILEVERSION
  #define VER_PRODUCTVERSION_STR     VER_FILEVERSION_STR

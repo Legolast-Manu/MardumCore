@@ -1,11 +1,11 @@
-# MardumCore
+# Legends of Azeroth Legion Progect
 
-![Mardumlogo](https://i.ytimg.com/vi/sMbXKJL82hA/maxresdefault.jpg)
+![Legends of Azeroth Legion Progect](https://i.ibb.co/tmv2wfz/6fd3b09456a142e78686cb0e4dd4642d.png)
 --------------
 
 ## Introduction
 
-5CentsCore is a *MMORPG* Framework based mostly in C++.
+Legends of Azeroth Legion Progect is a *MMORPG* Framework based mostly in C++.
 It is fully based on the MardumCore, TrinityCore.
 All credits to these guys.
 

@@ -1449,6 +1449,42 @@ bool SmartAIMgr::IsEventValid(SmartScriptHolder& e)
 
             break;
         }
+        case SMART_ACTION_FORCE_COMPLETE_QUEST:
+        {
+            for (auto& questID : e.action.ForceCompleteQuest.quest)
+            {
+                if (questID && !IsQuestValid(e, questID))
+                    questID = 0;
+            }
+            break;
+        }
+        case SMART_ACTION_CLEAR_QUEST:
+        {
+            for (auto& questID : e.action.clearQuest.quest)
+            {
+                if (questID && !IsQuestValid(e, questID))
+                    questID = 0;
+            }
+            break;
+        }
+        case SMART_ACTION_UNLEARN_SPELL:
+        {
+            for (auto& entryID : e.action.unlearnSpell.spell)
+            {
+                if (entryID && !IsSpellValid(e, entryID))
+                    entryID = 0;
+            }
+            break;
+        }
+        case SMART_ACTION_LEARN_SPELL:
+        {
+            for (auto& entryID : e.action.learnSpell.spell)
+            {
+                if (entryID && !IsSpellValid(e, entryID))
+                    entryID = 0;
+            }
+            break;
+        }
         case SMART_ACTION_FOLLOW:
         case SMART_ACTION_SET_ORIENTATION:
         case SMART_ACTION_STORE_TARGET_LIST:
@@ -1531,6 +1567,8 @@ bool SmartAIMgr::IsEventValid(SmartScriptHolder& e)
         case SMART_ACTION_ADD_FLYING_MOVEMENT_FLAG:
         case SMART_ACTION_REMOVE_FLYING_MOVEMENT_FLAG:
         case SMART_ACTION_CAST_SPELL_OFFSET:
+        case SMART_ACTION_SET_HEALTH_IN_PERCENT:
+        case SMART_ACTION_MOD_CURRENCY:
             break;
         default:
             TC_LOG_ERROR("sql.sql", "SmartAIMgr: Not handled action_type(%u), event_type(%u), Entry " SI64FMTD " SourceType %u Event %u, skipped.", e.GetActionType(), e.GetEventType(), e.entryOrGuid, e.GetScriptType(), e.event_id);

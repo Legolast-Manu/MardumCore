@@ -42,6 +42,7 @@
 #include "SpellMgr.h"
 #include "TemporarySummon.h"
 #include "Unit.h"
+#include "Log.h"
 
 enum HunterSpells
 {
