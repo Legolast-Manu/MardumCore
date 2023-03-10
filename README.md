@@ -1,6 +1,6 @@
-# MardumCore
+# Legends of Azeroth Legion Progect
 
-![Legends of Azeroth Legion Progect](https://www.freelogodesign.org/share/042260236e794ac0bfe6809dde70dec0)
+![Legends of Azeroth Legion Progect](<a href="https://imgbb.com/"><img src="https://i.ibb.co/tmv2wfz/6fd3b09456a142e78686cb0e4dd4642d.png" alt="6fd3b09456a142e78686cb0e4dd4642d" border="0"></a>)
 --------------
 
 ## Introduction
