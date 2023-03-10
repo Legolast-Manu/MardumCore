@@ -1,11 +1,11 @@
 # MardumCore
 
-![Mardumlogo](https://i.ytimg.com/vi/sMbXKJL82hA/maxresdefault.jpg)
+![Legends of Azeroth Legion Progect](https://www.freelogodesign.org/share/042260236e794ac0bfe6809dde70dec0)
 --------------
 
 ## Introduction
 
-MardumCore is a *MMORPG* Framework based mostly in C++.
+Legends of Azeroth Legion Progect is a *MMORPG* Framework based mostly in C++.
 It is fully based on the MardumCore, TrinityCore.
 All credits to these guys.
 
